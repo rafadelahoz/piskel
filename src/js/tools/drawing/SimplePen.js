@@ -8,7 +8,7 @@
 
   ns.SimplePen = function() {
     this.toolId = 'tool-pen';
-    this.helpText = 'Pen tool';
+    this.helpText = 'Pen tool (Right click to pick color)';
 
     this.previousCol = null;
     this.previousRow = null;
@@ -25,16 +25,24 @@
     this.previousCol = col;
     this.previousRow = row;
 
-    overlay.setPixel(col, row, color);
-
-    if (color === Constants.TRANSPARENT_COLOR) {
-      frame.setPixel(col, row, color);
+    // Pick the current color with the right mouse button
+    if (event.button == Constants.RIGHT_BUTTON && frame.containsPixel(col, row)) {
+      var sampledColor = frame.getPixel(col, row);
+      $.publish(Events.SELECT_PRIMARY_COLOR, [sampledColor]);
     }
-    this.pixels.push({
-      col : col,
-      row : row,
-      color : color
-    });
+    // Paint with other mouse buttons
+    else {
+        overlay.setPixel(col, row, color);
+
+        if (color === Constants.TRANSPARENT_COLOR) {
+          frame.setPixel(col, row, color);
+        }
+        this.pixels.push({
+          col : col,
+          row : row,
+          color : color
+        });
+      }
   };
 
   /**

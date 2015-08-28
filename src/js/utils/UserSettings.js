@@ -11,6 +11,7 @@
     ONION_SKIN : 'ONION_SKIN',
     LAYER_PREVIEW : 'LAYER_PREVIEW',
     LAYER_OPACITY : 'LAYER_OPACITY',
+    RIGHT_CLICK_PICKER : 'RIGHT_CLICK_PICKER',
 
     KEY_TO_DEFAULT_VALUE_MAP_ : {
       'GRID_WIDTH' : 0,
@@ -24,7 +25,8 @@
       'TILED_PREVIEW' : false,
       'ONION_SKIN' : false,
       'LAYER_OPACITY' : 0.2,
-      'LAYER_PREVIEW' : true
+      'LAYER_PREVIEW' : true,
+      'RIGHT_CLICK_PICKER' : true
     },
 
     /**
